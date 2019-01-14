@@ -43,7 +43,6 @@ def retrieve_hours
         arr = CSV.read("data.csv")
         arr.each do |row|
             csv_date, hours = row[0].split("?")
-            puts 'c'
             csv_date = Date.strptime(csv_date, "%Y %m %d")
 
             if csv_date.strftime("%m") == date.strftime("%m") # if same month

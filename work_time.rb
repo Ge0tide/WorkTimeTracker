@@ -40,18 +40,17 @@ def retrieve_hours
     input = gets.to_i
 
     if input == 1
-
-        CSV.foreach("data.csv") do |row|
-            csv_date, hours = row[0].to_s.split("?")
-
+        arr = CSV.read("data.csv")
+        arr.each do |row|
+            csv_date, hours = row[0].split("?")
+            puts 'c'
             csv_date = Date.strptime(csv_date, "%Y %m %d")
 
             if csv_date.strftime("%m") == date.strftime("%m") # if same month
                 hours_worked += hours.to_f
             end
-
-            return "Hours worked this month: #{hours_worked}"
         end
+        return "Hours worked this month: #{hours_worked}"
     end
 end
 
